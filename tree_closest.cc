@@ -105,11 +105,10 @@ node *tree_first(node *root) {
 node *tree_next(node *p) {
     if(p->right)
         return tree_first(p->right);
-    node *n = p;
-    while(n->parent) {
-        if(!n->parent->right || n->parent->right != n)
-            return n->parent;
-        else n = n->parent;
+    while(p->parent) {
+        if(!p->parent->right || p->parent->right != p)
+            return p->parent;
+        else p = p->parent;
     }
     return 0;
 }
@@ -158,4 +157,6 @@ int main(int argc, char **argv) {
     }
     return 0;
 }
+
+
 
